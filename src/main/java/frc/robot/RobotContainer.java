@@ -12,6 +12,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -30,12 +31,12 @@ import swervelib.SwerveInputStream;
 public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  final CommandXboxController driverXbox = new CommandXboxController(0);
+  private final CommandXboxController driverXbox = new CommandXboxController(0);
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
       "swerve/neo"));
   // Elevator
-   private final ElevatorSUB elevado = new ElevatorSUB();
+   //private final ElevatorSUB elevado = new ElevatorSUB();
 
   // Establish a Sendable Chooser that will be able to be sent to the
   // SmartDashboard, allowing selection of desired auto
@@ -87,10 +88,10 @@ public class RobotContainer {
     //Command para zerar o giroscópio
     driverXbox.rightBumper().onTrue(Commands.runOnce(drivebase::zeroGyro));
 
-    driverXbox.x().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.point0));
-    driverXbox.a().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL1));
-    driverXbox.b().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL2));
-    driverXbox.y().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL3));
+   //driverXbox.x().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.point0));
+   // driverXbox.a().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL1));
+    //driverXbox.b().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL2));
+    //driverXbox.y().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL3));
 
 
   }

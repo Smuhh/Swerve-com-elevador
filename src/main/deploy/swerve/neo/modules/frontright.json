@@ -1,26 +1,26 @@
-{
-  "drive": {
-    "type": "talonfx",
-    "id": 16,
-    "canbus": null
-  },
-  "angle": {
-    "type": "sparkmax_neo",
-    "id": 9,
-    "canbus": null
-  },
-  "encoder": {
-    "type": "cancoder",
-    "id": 14,
-    "canbus": null
-  },
-  "inverted": {
-    "drive": true,
-    "angle": true
-  },
-  "absoluteEncoderOffset":116.718840,
-  "location": {
-    "front": 10.82677165,
-    "left": -11.7125984
+  {
+    "drive": {
+      "type": "talonfx",
+      "id": 17,
+      "canbus": null
+    },
+    "angle": {
+      "type": "sparkmax_neo",
+      "id": 2, 
+      "canbus": null
+    },
+    "encoder": {
+      "type": "cancoder",
+      "id": 13,
+      "canbus": null
+    },
+    "inverted": {
+      "drive": false,
+      "angle": true
+    },
+    "absoluteEncoderOffset":235.634765625,
+    "location": {
+      "front": 10.82677165,
+      "left": -11.7125984
+    }
   }
-}
