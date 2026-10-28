@@ -52,9 +52,9 @@ public final class Constants
     public static class ElevatorSUBConstants {
     public static final int ControllerPort = 0;
 
+    public static final int MOTOR_ID = 6;
+    public static final int MOTOR_ID_2 = 7;
      
-        public static final int MOTOR_ID = 6; 
-        public static final int MOTOR_ID_2 = 5; 
 
         public static final double Reducao = 60.0; //calculo loko la
 
@@ -63,7 +63,7 @@ public final class Constants
         public static final double pointL1 = 9.76;   //9.7 deu 9.47cm
         public static final double pointL2 = 51.75;  //51.7 deu 51.44cm
         public static final double pointL3 = 88.77;  //88.6 deu 88.39 cm
-        public static final double DENTES_ENGRENAGEM = 58.0;
+        public static final double DENTES_ENGRENAGEM = 18.0;
 
         // Valor real passo em milímetros
         public static final double PASSO_CORRENTE_MM = 5.25; 
