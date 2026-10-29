@@ -18,13 +18,9 @@ import frc.robot.Constants;
 
 public class ElevatorSUB extends SubsystemBase {
 
-    private final SparkMax Motor1 = new SparkMax(Constants.ElevatorSUBConstants.MOTOR_ID,MotorType.kBrushless);
-
-    private final SparkMax Motor2 = new SparkMax(Constants.ElevatorSUBConstants.MOTOR_ID_2,MotorType.kBrushless);
+    private final SparkMax Motor1 = new SparkMax(Constants.ElevatorSUBConstants.MOTOR1_ELEVADOR,MotorType.kBrushless);
 
     private final RelativeEncoder encoder = Motor1.getEncoder();
-
-    private final SparkMaxConfig configMotor2 = new SparkMaxConfig();
 
     private final SparkMaxConfig configMotor1 = new SparkMaxConfig();
 
@@ -41,13 +37,12 @@ public class ElevatorSUB extends SubsystemBase {
     configMotor1.closedLoop.outputRange(-0.2, 0.2);
     configMotor1.idleMode(IdleMode.kBrake);
 
-    configMotor2.follow(Motor1);
 
     configMotor1.encoder.positionConversionFactor(Constants.ElevatorSUBConstants.CM_POR_ROTACAO_MOTOR);
 
     Motor1.configure(configMotor1,ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
     
-    Motor2.configure(configMotor2,ResetMode.kResetSafeParameters,PersistMode.kNoPersistParameters);}
+   }
    
 
     public double getPosicao() {
@@ -64,7 +59,7 @@ public class ElevatorSUB extends SubsystemBase {
     
 
     public double getAltura() {
-        return getPosicao(); //ja convertida em cm
+        return getPosicao(); 
     }
 
     @Override

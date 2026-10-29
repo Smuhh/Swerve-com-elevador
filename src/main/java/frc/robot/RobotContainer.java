@@ -23,9 +23,13 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ElevatorCMD;
+import frc.robot.commands.GripperCMD;
 import frc.robot.subsystems.ElevatorSUB;
+import frc.robot.subsystems.GripperSUB;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
+import java.lang.ModuleLayer.Controller;
+
 import swervelib.SwerveInputStream;
 
 public class RobotContainer {
@@ -36,7 +40,8 @@ public class RobotContainer {
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
       "swerve/neo"));
   // Elevator
-   //private final ElevatorSUB elevado = new ElevatorSUB();
+   private final ElevatorSUB elevado = new ElevatorSUB();
+   private final GripperSUB gripper = new GripperSUB();
 
   // Establish a Sendable Chooser that will be able to be sent to the
   // SmartDashboard, allowing selection of desired auto
@@ -88,11 +93,14 @@ public class RobotContainer {
     //Command para zerar o giroscópio
     driverXbox.rightBumper().onTrue(Commands.runOnce(drivebase::zeroGyro));
 
-   //driverXbox.x().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.point0));
-   // driverXbox.a().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL1));
-    //driverXbox.b().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL2));
-    //driverXbox.y().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL3));
-
+    driverXbox.x().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.point0));
+    driverXbox.a().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL1));
+    driverXbox.b().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL2));
+    driverXbox.y().onTrue(new ElevatorCMD(elevado, Constants.ElevatorSUBConstants.pointL3));
+    
+    //gripper
+    driverXbox.leftTrigger().whileTrue(new GripperCMD(gripper, false));
+    driverXbox.rightTrigger().whileTrue(new GripperCMD(gripper, true));
 
   }
 

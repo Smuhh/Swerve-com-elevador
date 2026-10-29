@@ -52,11 +52,9 @@ public final class Constants
     public static class ElevatorSUBConstants {
     public static final int ControllerPort = 0;
 
-    public static final int MOTOR_ID = 6;
-    public static final int MOTOR_ID_2 = 7;
-     
-
-        public static final double Reducao = 60.0; //calculo loko la
+    public static final int MOTOR1_ELEVADOR = 6;
+    
+        public static final double Reducao = 5.0; //calculo loko la
 
         //Niveis
         public static final double point0 = 0.00;
@@ -70,5 +68,13 @@ public final class Constants
 
        public static final double CM_POR_ROTACAO_MOTOR =
         (DENTES_ENGRENAGEM * PASSO_CORRENTE_MM)/ (10.0 * Reducao);
+    }
+    
+    public static class GripperConstants{
+
+     
+      public static final int MOTOR2_GRIPPER = 8;
+
+    }
   }
-}
+
