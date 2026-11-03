@@ -1,8 +1,6 @@
-
-package frc.robot.commands.Elevador;
+package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
 import frc.robot.subsystems.elevador.ElevatorSUB;
 import frc.robot.subsystems.elevador.ElevatorSUB.ElevatorState;
 
@@ -30,6 +28,9 @@ public class ElevatorCMD extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        
+
+        if (interrupted) {
+            elevador.manterPosicaoAtual();
+        }
     }
 }

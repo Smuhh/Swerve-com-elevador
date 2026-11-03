@@ -56,14 +56,17 @@ public final class Constants
         public static final int MOTOR_ID = 6; 
 
         //Niveis
-        public static final double point0 = 0.00;
+        public static final double point0 = 5.85;
         public static final double pointL1 = 9.5;   
         public static final double pointL2 = 12.0;  
-        public static final double pointL3 = 20.0;  
+        public static final double pointL3 = 22.0;  
 
 
-        public static final double max_position = 24.642704010009766;
+        public static final double max_position = 23.547483444213867;
         public static final double min_position = 0.0;
+
+        public static final double max_acceleration = 5500.0; //RPM por segundo
+        public static final double cursed_velocity = 5000.0; //RPM
 
   }
 

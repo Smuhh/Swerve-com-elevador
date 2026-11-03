@@ -1,5 +1,4 @@
-package frc.robot.commands.Garra;
-
+package frc.robot.commands.garra;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.garra.GarraSUB;
 

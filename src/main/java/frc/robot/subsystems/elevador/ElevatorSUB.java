@@ -44,18 +44,32 @@ public class ElevatorSUB extends SubsystemBase {
 
     private ElevatorState estado = ElevatorState.PARADO;
     private double posicaoAlvo = 0.0;
-    private static final double TOLERANCIA = 0.5;
+    private static final double TOLERANCIA = 1.0
+    ;
 
     public ElevatorSUB() {
 
-        encoder.setPosition(0);
-        configMotor1.closedLoop.pid(0.02, 0.0, 0.0);
-        configMotor1.closedLoopRampRate(0.6);
-        configMotor1.smartCurrentLimit(40);
-        configMotor1.closedLoop.outputRange(-0.5, 1);
-        configMotor1.idleMode(IdleMode.kBrake);
 
+        //CLosed Loop
+        configMotor1.closedLoop.pid(0.078, 0.0, 0.0);
+        configMotor1.closedLoop.outputRange(-0.2, 0.4);
+        configMotor1.closedLoopRampRate(0.9);
+
+        //MaxMotion
+        configMotor1.closedLoop.maxMotion.maxAcceleration(Constants.ElevatorSUBConstants.max_acceleration);
+        configMotor1.closedLoop.maxMotion.allowedProfileError(1.0);
+        configMotor1.closedLoop.maxMotion.cruiseVelocity(Constants.ElevatorSUBConstants.cursed_velocity);
+
+        //Configs padrões
+        configMotor1.smartCurrentLimit(50);
+        configMotor1.idleMode(IdleMode.kBrake);
+        configMotor1.inverted(false);
+
+        //Aplly config
         Motor1.configure(configMotor1, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        encoder.setPosition(0);
+        configMotor1.encoder.positionConversionFactor(1.0);
+
 
     }
 
@@ -74,8 +88,32 @@ public class ElevatorSUB extends SubsystemBase {
     }
 
     public static double getAltura() {
-        return getPosicao(); // ja convertida em cm
+        return getPosicao(); 
     }
+
+     public void setPosition(double posicao) {
+
+        posicaoAlvo = MathUtil.clamp(posicao,
+                Constants.ElevatorSUBConstants.min_position,
+                Constants.ElevatorSUBConstants.max_position);
+
+        noAlvoDebouncer.calculate(false); // começa a contagem do zero
+        estado = ElevatorState.MOVENDO;
+        closed.setSetpoint(posicaoAlvo, ControlType.kPosition);
+    }
+
+    public void manterPosicaoAtual() {
+    posicaoAlvo = MathUtil.clamp(
+        getPosicao(),
+        Constants.ElevatorSUBConstants.min_position,
+        Constants.ElevatorSUBConstants.max_position
+    );
+
+    noAlvoDebouncer.calculate(false);
+    estado = ElevatorState.MOVENDO;
+
+    closed.setSetpoint(posicaoAlvo, ControlType.kPosition);
+}
 
     // ==== SETTERS ====
     private void atualizarEstado() {
@@ -100,16 +138,7 @@ public class ElevatorSUB extends SubsystemBase {
         }
     }
 
-    public void setPosition(double posicao) {
-
-        posicaoAlvo = MathUtil.clamp(posicao,
-                Constants.ElevatorSUBConstants.min_position,
-                Constants.ElevatorSUBConstants.max_position);
-
-        noAlvoDebouncer.calculate(false); // começa a contagem do zero
-        estado = ElevatorState.MOVENDO;
-        closed.setSetpoint(posicaoAlvo, ControlType.kPosition);
-    }
+   
 
     // ==== PERIODIC =====
     @Override

@@ -36,21 +36,22 @@ public class GarraSUB extends SubsystemBase {
     private GarraState estado = GarraState.PARADA;
 
 
-    private static final double CORRENTE_PECA = 30; // amperes
+    private static final double CORRENTE_PECA = 25; // amperes
 
     private final Debouncer pecaDebouncer = new Debouncer(0.25, DebounceType.kRising);
 
     public GarraSUB() {
-        config.idleMode(IdleMode.kBrake);
+        config.idleMode(IdleMode.kBrake)
+        .inverted(true);
         config.smartCurrentLimit(40);
 
-        config.closedLoop.pid(0.0001, 0.0, 0.0);
+        config.closedLoop.pid(0.00014, 0.0, 0.0);
         config.closedLoop.outputRange(-1, 1);
 
-        config.closedLoop.feedForward.kV(0.0022);
+        config.closedLoop.feedForward.kV(0.0025);
 
         config.closedLoop.maxMotion
-                .maxAcceleration(400);
+                .maxAcceleration(5000);
 
         m_garra.configure(config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
