@@ -53,22 +53,25 @@ public final class Constants
     public static final int ControllerPort = 0;
 
      
-        public static final int MOTOR_ID = 10; 
-        public static final int MOTOR_ID_2 = 12; 
-
-        public static final double Reducao = 60.0; //calculo loko la
+        public static final int MOTOR_ID = 6; 
 
         //Niveis
-        public static final double point0 = 0.00;
-        public static final double pointL1 = 9.76;   //9.7 deu 9.47cm
-        public static final double pointL2 = 51.75;  //51.7 deu 51.44cm
-        public static final double pointL3 = 88.77;  //88.6 deu 88.39 cm
-        public static final double DENTES_ENGRENAGEM = 58.0;
+        public static final double point0 = 5.85;
+        public static final double pointL1 = 9.5;   
+        public static final double pointL2 = 12.0;  
+        public static final double pointL3 = 22.0;  
 
-        // Valor real passo em milímetros
-        public static final double PASSO_CORRENTE_MM = 5.25; 
 
-       public static final double CM_POR_ROTACAO_MOTOR =
-        (DENTES_ENGRENAGEM * PASSO_CORRENTE_MM)/ (10.0 * Reducao);
+        public static final double max_position = 23.547483444213867;
+        public static final double min_position = 0.0;
+
+        public static final double max_acceleration = 5500.0; //RPM por segundo
+        public static final double cursed_velocity = 5000.0; //RPM
+
+  }
+
+  public static class GarraSUBConstants {
+    public static final double VELOCIDADE_COLETA = 2000; // RPM
+    public static final double VELOCIDADE_EJECAO = -2000; // RPM (negativo = sentido contrário)
   }
 }

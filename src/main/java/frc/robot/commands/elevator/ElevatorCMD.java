@@ -1,5 +1,4 @@
-
-package frc.robot.commands.Elevador;
+package frc.robot.commands.elevator;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.elevador.ElevatorSUB;
@@ -19,7 +18,7 @@ public class ElevatorCMD extends Command {
 
     @Override
     public void initialize() {
-        elevador.moverPara(posicao);
+        elevador.setPosition(posicao);
     }
 
     @Override
@@ -29,7 +28,9 @@ public class ElevatorCMD extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        // Não desliga o motor:
-        // o controlador PID mantém a posição.
+
+        if (interrupted) {
+            elevador.manterPosicaoAtual();
+        }
     }
 }
