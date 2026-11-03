@@ -54,26 +54,30 @@ public final class Constants
 
     public static final int MOTOR1_ELEVADOR = 6;
     
-        public static final double Reducao = 5.0; //calculo loko la
+        public static final double Reducao = 5.0; 
 
         //Niveis
-        public static final double point0 = 0.00;
-        public static final double pointL1 = 9.76;   //9.7 deu 9.47cm
-        public static final double pointL2 = 51.75;  //51.7 deu 51.44cm
-        public static final double pointL3 = 88.77;  //88.6 deu 88.39 cm
-        public static final double DENTES_ENGRENAGEM = 18.0;
+        
+        public static final double positionMotor = 9.5;
+        public static final double pointL1 = positionMotor;  // na vida real ele é o 0 / 9,5
+        public static final double pointL2 = 38.209861755371094; // é pra ser 51,5
+        public static final double pointL3 = 56.07456970214844;  // é pra ser 72 na vida real
+        public static final double DENTES_CATRACA = 18.0;
 
-        // Valor real passo em milímetros
+        // Valor real passo em milímetros;
         public static final double PASSO_CORRENTE_MM = 5.25; 
 
        public static final double CM_POR_ROTACAO_MOTOR =
-        (DENTES_ENGRENAGEM * PASSO_CORRENTE_MM)/ (10.0 * Reducao);
+         (DENTES_CATRACA * PASSO_CORRENTE_MM) / ( 10 * Reducao);
+
+         public static final double TOLERANCIA = 0.5;
     }
     
     public static class GripperConstants{
 
-     
-      public static final int MOTOR2_GRIPPER = 8;
+      public static final double velcolt = -1200;
+      public static final double velexp = 1200;
+      public static final int MOTOR2_GRIPPER = 7;
 
     }
   }

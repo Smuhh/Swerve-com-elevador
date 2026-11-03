@@ -6,10 +6,11 @@
 
         GripperSUB grippersub;
         boolean puxar;
+        double velcolt;
 
-        public GripperCMD (GripperSUB gripperSUB,boolean puxar) {
+        public GripperCMD (GripperSUB gripperSUB,double velcolt) {
         this.grippersub = gripperSUB;
-        this.puxar = puxar;
+        this.velcolt = velcolt;
         addRequirements(gripperSUB);}
 
         @Override
@@ -17,12 +18,12 @@
         if(puxar){
         grippersub.puxar();}
 
-        else{grippersub.expulsar();}
+        else{grippersub.soltar();}
 
         
         }
         @Override
         public void end(boolean interrupted) {
-            grippersub.stop();
+            grippersub.parar();
         }
     }

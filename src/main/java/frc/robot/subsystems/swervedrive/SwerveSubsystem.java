@@ -75,7 +75,7 @@ public class SwerveSubsystem extends SubsystemBase
   private final Field2d field = new Field2d();
   public SwerveSubsystem(File directory)
   {
-    SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
+    SwerveDriveTelemetry.verbosity = TelemetryVerbosity.LOW;
     try
     {
       swerveDrive = new SwerveParser(directory).createSwerveDrive(Constants.MAX_SPEED);

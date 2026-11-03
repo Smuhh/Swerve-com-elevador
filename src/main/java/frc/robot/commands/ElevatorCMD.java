@@ -5,12 +5,11 @@
 package frc.robot.commands;
 import frc.robot.subsystems.ElevatorSUB;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 
 
 public class ElevatorCMD extends Command {
 
-// private final ElevatorSUB elevator;
-// private final double targetHeight;
 double position;
 ElevatorSUB elevatorSUB;
 
@@ -23,14 +22,15 @@ public ElevatorCMD(ElevatorSUB elevatorSUB, double position) {
 
   @Override
   public void execute() {
-      elevatorSUB.subir(position);
+      elevatorSUB.moverAte(position);
   }
 
   
       
   @Override
   public boolean isFinished() {
-  return Math.abs(elevatorSUB.getAltura() - position) < 1.2;
+  return Math.abs(
+elevatorSUB.getAltura() - position) < Constants.ElevatorSUBConstants.TOLERANCIA;
  }
 
 }
