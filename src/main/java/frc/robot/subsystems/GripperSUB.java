@@ -48,7 +48,7 @@ public class GripperSUB extends SubsystemBase {
 
         public void puxar() {
        
-        closed.setSetpoint(-1200,ControlType.kVelocity);
+        closed.setSetpoint(Constants.GripperConstants.velcolt,ControlType.kVelocity);
     }
 
     public void iniciarColeta() {
@@ -74,7 +74,7 @@ public class GripperSUB extends SubsystemBase {
 
 
     public void soltar() {
-        closed.setSetpoint(1200, ControlType.kVelocity);
+        closed.setSetpoint(Constants.GripperConstants.velexp, ControlType.kVelocity);
     }
 
     public double getCorrente(){
