@@ -28,6 +28,7 @@ public class GripperSUB extends SubsystemBase {
         config.closedLoopRampRate(0.70);
         config.smartCurrentLimit(40);
         config.closedLoop.outputRange(-0.4, 0.4);
+        config.idleMode(IdleMode.kBrake);
 
         Motor_Do_Gripper_1.configure(
             config, 
