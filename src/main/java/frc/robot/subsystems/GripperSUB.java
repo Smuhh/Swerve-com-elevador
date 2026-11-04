@@ -98,7 +98,7 @@ public class GripperSUB extends SubsystemBase {
         case COLETANDO :
             puxar();
             double correnteatual = getCorrente();
-            if(correnteatual >=40){
+            if(correnteatual >= 30){
                 timerColeta.start();
             if(timerColeta.get() >= 0.2){
                 estadoatual = estadogripper.PECA_DETECTADA;
