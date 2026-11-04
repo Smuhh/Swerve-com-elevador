@@ -100,7 +100,7 @@ public class GripperSUB extends SubsystemBase {
             double correnteatual = getCorrente();
             if(correnteatual >= 30){
                 timerColeta.start();
-            if(timerColeta.get() >= 0.2){
+            if(timerColeta.get() >= 0.3){
                 estadoatual = estadogripper.PECA_DETECTADA;
                 Motor_Do_Gripper_1.stopMotor();}
             }
