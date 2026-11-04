@@ -116,7 +116,7 @@ public class RobotContainer {
 
     //iniciar 
     
-    co_piloto.rightTrigger().onTrue(new GripperCMD(gripper, Constants.GripperConstants.velcolt));
+    co_piloto.rightTrigger().onTrue(new GripperCMD(gripper, Constants.GripperConstants.velcolt).withTimeout(6));
     co_piloto.leftTrigger().whileTrue(new GripperCMD(gripper, Constants.GripperConstants.velexp));
   }
 
