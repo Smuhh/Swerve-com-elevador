@@ -62,6 +62,12 @@ public class GripperSUB extends SubsystemBase {
         estadoatual = estadogripper.EXPULSANDO;
     }
 }
+    public void cancelarColeta() {
+    if (estadoatual == estadogripper.COLETANDO) {
+        estadoatual = estadogripper.AGUARDANDO;
+        Motor_Do_Gripper_1.stopMotor();
+    }
+}
 
     public void finalizarExpulsao() {
     if (estadoatual == estadogripper.EXPULSANDO) {
