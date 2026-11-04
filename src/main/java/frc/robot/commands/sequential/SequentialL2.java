@@ -11,7 +11,7 @@ public class SequentialL2 extends SequentialCommandGroup{
 
     public SequentialL2(ElevatorSUB elevatorSUB, GripperSUB gripperSUB) {
       addCommands(new ElevatorCMD(elevatorSUB, Constants.ElevatorSUBConstants.pointL1),
-                  new GripperCMD(gripperSUB, -1200),
+                  new GripperCMD(gripperSUB, -1200).withTimeout(6),
                   new ElevatorCMD(elevatorSUB, Constants.ElevatorSUBConstants.pointL2));
     }   
     
