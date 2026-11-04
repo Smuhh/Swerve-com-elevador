@@ -39,12 +39,14 @@ public class RobotContainer {
   // Elevator
    private final ElevatorSUB elevado = new ElevatorSUB();
    private final GripperSUB gripper = new GripperSUB();
-   private final SequentialL2 sequential2 = new SequentialL2(elevado, gripper);
-   private final SequentialL3 sequentialL3 = new SequentialL3(elevado, gripper);
+  
   // Replace with CommandPS4Controller or CommandJoystick if needed
+  
   private final CommandXboxController driverXbox = new CommandXboxController(0);
   private final CommandXboxController co_piloto = new CommandXboxController(1);
+  
   // The robot's subsystems and commands are defined here...
+  
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
       "swerve/neo"));
 
@@ -114,8 +116,8 @@ public class RobotContainer {
 
     //iniciar 
     
-    co_piloto.rightTrigger().toggleOnTrue(new GripperCMD(gripper, Constants.GripperConstants.velcolt));
-    co_piloto.rightTrigger().toggleOnTrue(new GripperCMD(gripper, Constants.GripperConstants.velexp));
+    co_piloto.rightTrigger().onTrue(new GripperCMD(gripper, Constants.GripperConstants.velcolt));
+    co_piloto.leftTrigger().whileTrue(new GripperCMD(gripper, Constants.GripperConstants.velexp));
   }
 
   public Command getAutonomousCommand() {
