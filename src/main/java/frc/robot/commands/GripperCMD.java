@@ -26,6 +26,9 @@
 
         @Override
        public void end(boolean interrupted) {
-       if (velcolt == Constants.GripperConstants.velexp) {
-        grippersub.finalizarExpulsao();}}
+          if (velcolt == Constants.GripperConstants.velexp) {
+        grippersub.finalizarExpulsao();}
+          else if (interrupted) {
+        grippersub.cancelarColeta();}
+                                    }
     }
