@@ -52,15 +52,15 @@ public class GripperSUB extends SubsystemBase {
         closed.setSetpoint(Constants.GripperConstants.velcolt,ControlType.kVelocity);
     }
 
-    public void iniciarColeta() {
-    if (estadoatual == estadogripper.AGUARDANDO) {
-        estadoatual = estadogripper.COLETANDO;
+   public void iniciarColeta() {
+    timerColeta.stop();
+    timerColeta.reset();
+    estadoatual = estadogripper.COLETANDO;
+}
     }
-    }
-    public void iniciarExpulsao() {
-    if (estadoatual == estadogripper.PECA_DETECTADA) {
-        estadoatual = estadogripper.EXPULSANDO;
-    }
+   public void iniciarExpulsao() {
+    estadoatual = estadogripper.EXPULSANDO;
+}
 }
     public void cancelarColeta() {
     if (estadoatual == estadogripper.COLETANDO) {
