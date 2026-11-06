@@ -57,11 +57,11 @@ public class GripperSUB extends SubsystemBase {
     timerColeta.reset();
     estadoatual = estadogripper.COLETANDO;
 }
-    }
+    
    public void iniciarExpulsao() {
     estadoatual = estadogripper.EXPULSANDO;
 }
-}
+
     public void cancelarColeta() {
     if (estadoatual == estadogripper.COLETANDO) {
         estadoatual = estadogripper.AGUARDANDO;
